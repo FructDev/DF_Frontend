@@ -1,8 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  base: "https://fructdev.github.io/DF_Frontend/",
   plugins: [react()],
+  base: "/", // Esto asegura que el frontend funcione bien en Render sin importar la URL
+  build: {
+    outDir: "dist", // Carpeta donde se generará la build de producción
+  },
 });
