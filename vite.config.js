@@ -7,4 +7,7 @@ export default defineConfig({
   build: {
     outDir: "dist", // Carpeta donde se generará la build de producción
   },
+  server: {
+    historyApiFallback: true,
+  },
 });
