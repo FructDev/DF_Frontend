@@ -1,7 +1,7 @@
 import React from 'react';
 // import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import Navbar from '../components/Navbar';
-// import { FaCcVisa, FaCcMastercard, FaWhatsapp } from 'react-icons/fa';
+import { FaWhatsapp } from 'react-icons/fa';
 import api from '../utils/api'; // Asegúrate de tener configurada tu API en esta ruta
 import { useNavigate } from 'react-router-dom';
 import BancoPopularLogo from '../assets/banco-popular.png'; // Asegúrate de que los logos estén en tu carpeta de assets
