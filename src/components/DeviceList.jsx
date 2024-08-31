@@ -20,7 +20,7 @@ const DeviceList = () => {
 
     const handleStatusChange = async (deviceId, newStatus) => {
         try {
-            await api.patch(`/divices/device/${deviceId}/status`, { status: newStatus });
+            await api.patch(`/devices/device/${deviceId}/status`, { status: newStatus });
             setDevices(devices.map(device => 
                 device._id === deviceId ? { ...device, status: newStatus } : device
             ));
