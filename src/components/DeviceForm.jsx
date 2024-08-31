@@ -40,6 +40,9 @@ const DeviceFormTrigger = () => {
         descripcion: '',
       });
       setError('');
+      setTimeout(() => {
+        setIsModalOpen(false); // Cierra el modal después de un registro exitoso
+      }, 500); // Espera 500ms para mostrar el mensaje de éxito antes de cerrar el modal
     } catch (error) {
       console.error('Error registrando dispositivo:', error);
       setError('Error registrando el dispositivo.');

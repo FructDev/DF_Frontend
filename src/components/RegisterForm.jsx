@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import api from '../utils/api';
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       usuario: '',
@@ -37,6 +40,7 @@ const RegisterForm = () => {
       try {
         await api.post('/users/register', values);
         alert('Registro exitoso. Espere la aprobación del administrador.');
+        navigate('/login'); // Redirigir al login después de un registro exitoso
       } catch (error) {
         setErrors({ api: 'Error al registrar. Por favor, intente de nuevo.' });
       } finally {
@@ -49,7 +53,7 @@ const RegisterForm = () => {
     <div className="flex mt-10 justify-center items-center bg-gray-100">   
       <form className='bg-white shadow-lg rounded-lg p-8 w-full max-w-md' onSubmit={formik.handleSubmit}>
         <h2 className="text-2xl font-bold mb-6 text-gray-800">Registrar Usuario</h2>
-        <div  className="mb-4">
+        <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="usuario">Usuario</label>
           <input
             id="usuario"
@@ -60,7 +64,7 @@ const RegisterForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {formik.touched.usuario && formik.errors.usuario ? (
-            <div>{formik.errors.usuario}</div>
+            <div className="text-red-500 text-sm mt-1">{formik.errors.usuario}</div>
           ) : null}
         </div>
 
@@ -75,7 +79,7 @@ const RegisterForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {formik.touched.correo && formik.errors.correo ? (
-            <div>{formik.errors.correo}</div>
+            <div className="text-red-500 text-sm mt-1">{formik.errors.correo}</div>
           ) : null}
         </div>
 
@@ -90,7 +94,7 @@ const RegisterForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {formik.touched.contrasena && formik.errors.contrasena ? (
-            <div>{formik.errors.contrasena}</div>
+            <div className="text-red-500 text-sm mt-1">{formik.errors.contrasena}</div>
           ) : null}
         </div>
 
@@ -105,7 +109,7 @@ const RegisterForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {formik.touched.nombre && formik.errors.nombre ? (
-            <div>{formik.errors.nombre}</div>
+            <div className="text-red-500 text-sm mt-1">{formik.errors.nombre}</div>
           ) : null}
         </div>
 
@@ -120,7 +124,7 @@ const RegisterForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {formik.touched.apellido && formik.errors.apellido ? (
-            <div>{formik.errors.apellido}</div>
+            <div className="text-red-500 text-sm mt-1">{formik.errors.apellido}</div>
           ) : null}
         </div>
 
@@ -135,7 +139,7 @@ const RegisterForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {formik.touched.direccionTienda && formik.errors.direccionTienda ? (
-            <div>{formik.errors.direccionTienda}</div>
+            <div className="text-red-500 text-sm mt-1">{formik.errors.direccionTienda}</div>
           ) : null}
         </div>
 
@@ -150,17 +154,17 @@ const RegisterForm = () => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
           {formik.touched.telefonoTienda && formik.errors.telefonoTienda ? (
-            <div>{formik.errors.telefonoTienda}</div>
+            <div className="text-red-500 text-sm mt-1">{formik.errors.telefonoTienda}</div>
           ) : null}
         </div>
 
-        {formik.errors.api && <div>{formik.errors.api}</div>}
+        {formik.errors.api && <div className="text-red-500 text-sm mt-2">{formik.errors.api}</div>}
 
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" disabled={formik.isSubmitting}>
           Registrar
         </button>
       </form>
-      </div>
+    </div>
   );
 };
 
